@@ -1,9 +1,9 @@
 const mongoose=require('mongoose');
 
-const productSchema=mongoose.Schema({
+const productSchema=new mongoose.Schema({
     name:{
         type:String,
-        require:[true,"Please enter product name"],
+        require:[true,"Please enter product name"], //if false then warn to enter product name
         trim:true
     },
     description:
@@ -37,7 +37,7 @@ const productSchema=mongoose.Schema({
     Stock:
     {
         type:Number,
-        required:[true,'Please enterproduct stock'],
+        required:[true,'Please enter product stock'],
         maxLength:[4,"Stock cannot exceed 4 characters"],
         default:1
     },
@@ -59,6 +59,11 @@ const productSchema=mongoose.Schema({
             required:true
         }
     }],
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:"User",
+        required:true,
+    },
     createdAt:{
         type:Date,
         default:Date.now
