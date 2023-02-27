@@ -12,6 +12,6 @@ module.exports = (err, req, res, next) => {
   
   res.status(err.statusCode).json({
     success: false,
-    err: err.message,//err.stack garera complete error dekhauna ni milxa
+    message: err.message,//err.stack garera complete error dekhauna ni milxa
   });
 };
